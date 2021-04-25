@@ -1,12 +1,10 @@
 import json
-
 from mrjob.job import MRJob
 from mrjob.step import MRStep
 import datetime
 
 
 class Bus(MRJob):
-
     def steps(self):
         return [
             MRStep(mapper=self.mapper_get_rows,  # Get (Region, Country)
@@ -25,8 +23,6 @@ class Bus(MRJob):
         timeList = list(times)
         first_time = min(timeList)
         last_time = max(timeList)
-        # d1 = datetime.datetime.fromtimestamp(first_time)
-        # d2 = datetime.datetime.fromtimestamp(last_time)
         totaltime = last_time - first_time
         yield projection, int(totaltime)
 
